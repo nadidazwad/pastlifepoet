@@ -3,7 +3,7 @@
 import { TextReveal } from "./effects/TextReveal";
 import { TextDistort } from "./effects/TextDistort";
 import { MagneticButton } from "./ui/MagneticButton";
-import { ArrowDownRight } from "lucide-react";
+import { ArrowDownRight, Github } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { useLenis } from "lenis/react";
 
@@ -30,7 +30,7 @@ export function Hero() {
           {siteConfig.description}
         </p>
         
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col sm:flex-row gap-4">
           <MagneticButton 
             className="group"
             onClick={() => lenis?.scrollTo("#work", { offset: -80 })}
@@ -38,6 +38,16 @@ export function Hero() {
             View Projects
             <ArrowDownRight className="ml-2 h-4 w-4 transition-transform group-hover:rotate-45" />
           </MagneticButton>
+
+          <a 
+            href={siteConfig.links.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-6 py-4 text-xs font-mono uppercase tracking-widest border border-border rounded-full hover:bg-foreground hover:text-background transition-all duration-300"
+          >
+            <Github className="w-4 h-4" />
+            Star on GitHub
+          </a>
         </div>
       </div>
 

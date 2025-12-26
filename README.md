@@ -55,6 +55,10 @@ Deploy easily on [Vercel](https://vercel.com/new):
 2. Import the project into Vercel.
 3. Done.
 
+## Contributing
+
+Contributions are welcome! If you have a feature request or found a bug, please open an issue. If you want to contribute code, feel free to fork the repository and submit a pull request.
+
 ## License
 
 MIT License. Feel free to use it for your own portfolio!

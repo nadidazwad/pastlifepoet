@@ -1,6 +1,7 @@
 "use client";
 
 import { siteConfig } from "@/config/site";
+import { Github } from "lucide-react";
 
 export function Footer() {
   return (
@@ -11,7 +12,10 @@ export function Footer() {
           © {new Date().getFullYear()} {siteConfig.author.toUpperCase()}. BUILT WITH NEXT.JS & GSAP.
         </div>
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 text-[10px] font-mono uppercase tracking-widest text-muted">
-          <a href={siteConfig.links.github} target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Source Code</a>
+          <a href={siteConfig.links.github} target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors flex items-center gap-1">
+            <Github className="w-3 h-3" />
+            Star on GitHub
+          </a>
           <span>Local Time: {new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
           <span>Status: {siteConfig.status}</span>
         </div>

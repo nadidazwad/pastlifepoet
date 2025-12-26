@@ -95,17 +95,24 @@ export function SourceModal({ isOpen, onClose }: SourceModalProps) {
                       <span className="opacity-30 group-hover:opacity-100 transition-opacity">Copy</span>
                     </div>
                     
-                    <div className="grid grid-cols-1 gap-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <a 
                         href={siteConfig.links.github}
                         target="_blank"
-                        className="flex items-center justify-between p-4 border border-border rounded-xl hover:border-foreground transition-colors group"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2 py-4 bg-foreground text-background rounded-xl text-xs font-mono uppercase tracking-widest hover:opacity-90 transition-opacity"
                       >
-                        <div className="flex items-center gap-3">
-                          <Github className="w-5 h-5 text-muted group-hover:text-foreground transition-colors" />
-                          <span className="font-mono text-xs md:text-sm">View on GitHub</span>
-                        </div>
-                        <ExternalLink className="w-4 h-4 text-muted/40 group-hover:text-foreground" />
+                        <Github className="w-4 h-4" />
+                        Star Repository
+                      </a>
+                      <a 
+                        href={`${siteConfig.links.github}/issues`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2 py-4 border border-border rounded-xl text-xs font-mono uppercase tracking-widest hover:bg-muted/5 transition-colors"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                        Contribute
                       </a>
                     </div>
                   </div>
