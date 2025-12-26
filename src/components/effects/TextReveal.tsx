@@ -20,6 +20,10 @@ export function TextReveal({ children, className, once = true }: TextRevealProps
   useEffect(() => {
     if (!textRef.current) return;
 
+    // Skip animation if user prefers reduced motion
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
+
     const split = new SplitType(textRef.current, { types: "chars,words" });
 
     gsap.from(split.chars, {

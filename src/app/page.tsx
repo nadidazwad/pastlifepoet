@@ -17,10 +17,18 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(() => {
+    // Only show preloader on first visit in this session
+    if (typeof window !== "undefined") {
+      return !sessionStorage.getItem("preloaderShown");
+    }
+    return true;
+  });
 
   useEffect(() => {
     if (!isLoading) {
+      // Mark preloader as shown for this session
+      sessionStorage.setItem("preloaderShown", "true");
       // Refresh ScrollTrigger after preloader is gone
       ScrollTrigger.refresh();
     }

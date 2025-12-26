@@ -48,11 +48,11 @@ export function Experience() {
               
               <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-6 gap-4">
                 <div className="space-y-2">
-                  <div className="flex items-center gap-4">
-                    <h4 className="text-3xl sm:text-4xl md:text-5xl font-xanh group-hover:italic transition-all duration-500">
+                  <div className="flex items-center gap-3 md:gap-4">
+                    <h4 className="text-2xl sm:text-3xl md:text-5xl font-xanh group-hover:italic transition-all duration-500">
                       {exp.company}
                     </h4>
-                    <ArrowUpRight className="h-6 w-6 text-muted opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500" />
+                    <ArrowUpRight className="h-5 w-5 md:h-6 md:w-6 text-muted opacity-60 md:opacity-0 md:-translate-x-4 md:group-hover:opacity-100 md:group-hover:translate-x-0 transition-all duration-500" />
                   </div>
                   <p className="text-sm font-mono uppercase tracking-widest text-muted/40 group-hover:text-foreground transition-colors">
                     {exp.role}

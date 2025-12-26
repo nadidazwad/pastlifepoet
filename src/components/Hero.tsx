@@ -51,9 +51,10 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="absolute bottom-12 left-6 right-6 flex justify-between text-[10px] sm:text-xs font-mono uppercase tracking-widest text-muted md:left-12 md:right-12">
+      <div className="absolute bottom-10 md:bottom-12 left-6 right-6 flex justify-between text-xs font-mono uppercase tracking-widest text-muted/70 md:left-12 md:right-12">
         <span>Based in {siteConfig.location}</span>
-        <span>Scroll to Explore</span>
+        <span className="hidden sm:inline">Scroll to Explore</span>
+        <span className="sm:hidden">↓</span>
       </div>
     </section>
   );

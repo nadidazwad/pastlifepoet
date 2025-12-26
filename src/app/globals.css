@@ -84,6 +84,21 @@ html.lenis body {
   transition: font-variation-settings 0.3s ease;
 }
 
+/* Focus States - Accessible & Visible */
+.focus-ring {
+  @apply outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background transition-shadow;
+}
+
+/* Touch Target Minimum 44x44px */
+.touch-target {
+  @apply min-h-[44px] min-w-[44px] flex items-center justify-center;
+}
+
+/* Mobile-first touch padding for links */
+.touch-link {
+  @apply -m-2 p-2 inline-flex items-center;
+}
+
 .liquid-mask {
   mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='10'/%3E%3C/filter%3E%3Ccircle cx='50' cy='50' r='40' filter='url(%23noise)'/%3E%3C/svg%3E");
   mask-size: cover;

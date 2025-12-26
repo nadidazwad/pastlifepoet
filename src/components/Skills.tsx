@@ -38,19 +38,20 @@ export function Skills() {
             {skills.map((skill, index) => (
               <div
                 key={index}
-                className="group flex items-center justify-between py-6 md:py-8 border-b border-border hover:border-foreground transition-colors cursor-default"
+                className="group flex items-center justify-between py-5 md:py-8 border-b border-border hover:border-foreground transition-colors cursor-default min-h-[56px]"
               >
-                <div className="flex items-baseline gap-4">
-                  <span className="text-xs font-mono text-muted/40 group-hover:text-foreground transition-opacity">
+                <div className="flex items-baseline gap-3 md:gap-4">
+                  <span className="text-xs font-mono text-muted/60 md:text-muted/40 md:group-hover:text-foreground transition-opacity">
                     {String(index + 1).padStart(2, '0')}
                   </span>
-                  <span className="text-2xl sm:text-3xl md:text-4xl font-xanh group-hover:translate-x-2 transition-transform duration-500 ease-out">
+                  <span className="text-xl sm:text-2xl md:text-4xl font-xanh md:group-hover:translate-x-2 transition-transform duration-500 ease-out">
                     {skill}
                   </span>
                 </div>
-                <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-4 group-hover:translate-x-0">
-                  <div className="h-1 w-1 rounded-full bg-foreground" />
-                  <span className="text-[10px] font-mono uppercase tracking-tighter">
+                {/* Visible on mobile, hover-reveal on desktop */}
+                <div className="flex items-center gap-2 opacity-60 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 md:translate-x-4 md:group-hover:translate-x-0">
+                  <div className="h-1.5 w-1.5 rounded-full bg-foreground" />
+                  <span className="text-[11px] font-mono uppercase tracking-tighter hidden sm:inline">
                     Mastery
                   </span>
                 </div>
@@ -58,15 +59,15 @@ export function Skills() {
             ))}
           </div>
           
-          <div className="mt-12 flex flex-wrap gap-4 text-muted/40 text-[10px] font-mono uppercase tracking-widest">
+          <div className="mt-10 md:mt-12 flex flex-wrap gap-3 md:gap-4 text-muted/50 text-[11px] sm:text-xs font-mono uppercase tracking-widest">
             <span>CI/CD</span>
-            <span>•</span>
+            <span className="text-muted/30">•</span>
             <span>Unit Testing</span>
-            <span>•</span>
+            <span className="text-muted/30">•</span>
             <span>System Architecture</span>
-            <span>•</span>
+            <span className="text-muted/30">•</span>
             <span>Cloud Native</span>
-            <span>•</span>
+            <span className="text-muted/30">•</span>
             <span>Accessibility</span>
           </div>
         </div>

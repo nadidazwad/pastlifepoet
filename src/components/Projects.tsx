@@ -66,10 +66,10 @@ export function Projects() {
                 setActiveCategory(cat);
                 setIsExpanded(false);
               }}
-              className={`px-4 py-2 rounded-full text-xs font-mono uppercase tracking-wider transition-all duration-300 border ${
+              className={`px-5 py-3 min-h-[44px] rounded-full text-xs font-mono uppercase tracking-wider transition-all duration-300 border focus-ring active:scale-95 ${
                 activeCategory === cat
                   ? "bg-foreground text-background border-foreground"
-                  : "bg-transparent text-muted border-border hover:border-muted"
+                  : "bg-transparent text-muted border-border hover:border-muted active:bg-foreground/5"
               }`}
             >
               {cat}
@@ -93,17 +93,22 @@ export function Projects() {
                 {project.title.charAt(0)}
               </div>
               <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/5 transition-colors duration-500" />
-              <div className="absolute top-4 right-4 md:top-8 md:right-8 p-3 md:p-4 bg-background rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
+              <div className="absolute top-4 right-4 md:top-8 md:right-8 p-3 md:p-4 bg-background rounded-full opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-500 md:translate-y-2 md:group-hover:translate-y-0 shadow-sm">
                 <ArrowUpRight className="h-4 w-4 md:h-6 md:w-6" />
               </div>
               
-              {/* Tech Stack Badges */}
-              <div className="absolute bottom-4 left-4 md:bottom-8 md:left-8 flex flex-wrap gap-2 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0 delay-75">
-                {project.techStack.map((tech) => (
-                  <span key={tech} className="px-3 py-1 bg-background/80 backdrop-blur-sm text-[10px] font-mono uppercase tracking-tight rounded-full">
+              {/* Tech Stack Badges - Visible on mobile, hover on desktop */}
+              <div className="absolute bottom-4 left-4 md:bottom-8 md:left-8 flex flex-wrap gap-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-500 md:translate-y-2 md:group-hover:translate-y-0 md:delay-75">
+                {project.techStack.slice(0, 3).map((tech) => (
+                  <span key={tech} className="px-3 py-1.5 bg-background/90 backdrop-blur-sm text-[11px] font-mono uppercase tracking-tight rounded-full shadow-sm">
                     {tech}
                   </span>
                 ))}
+                {project.techStack.length > 3 && (
+                  <span className="px-3 py-1.5 bg-background/90 backdrop-blur-sm text-[11px] font-mono uppercase tracking-tight rounded-full shadow-sm">
+                    +{project.techStack.length - 3}
+                  </span>
+                )}
               </div>
             </div>
             

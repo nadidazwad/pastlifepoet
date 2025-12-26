@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { useLenis } from "lenis/react";
 import { cn } from "@/lib/utils";
@@ -24,6 +24,55 @@ export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">("light");
   const lenis = useLenis();
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const menuTriggerRef = useRef<HTMLButtonElement>(null);
+
+  // Handle Escape key to close mobile menu
+  const handleEscapeKey = useCallback((e: KeyboardEvent) => {
+    if (e.key === "Escape" && isMenuOpen) {
+      setIsMenuOpen(false);
+      menuTriggerRef.current?.focus();
+    }
+  }, [isMenuOpen]);
+
+  // Focus trap for mobile menu
+  useEffect(() => {
+    if (!isMenuOpen) return;
+    
+    document.addEventListener("keydown", handleEscapeKey);
+    
+    // Focus trap logic
+    const menuElement = mobileMenuRef.current;
+    if (!menuElement) return;
+    
+    const focusableElements = menuElement.querySelectorAll<HTMLElement>(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    const firstFocusable = focusableElements[0];
+    const lastFocusable = focusableElements[focusableElements.length - 1];
+    
+    // Focus the first element when menu opens
+    setTimeout(() => firstFocusable?.focus(), 100);
+    
+    const handleTabKey = (e: KeyboardEvent) => {
+      if (e.key !== "Tab") return;
+      
+      if (e.shiftKey && document.activeElement === firstFocusable) {
+        e.preventDefault();
+        lastFocusable?.focus();
+      } else if (!e.shiftKey && document.activeElement === lastFocusable) {
+        e.preventDefault();
+        firstFocusable?.focus();
+      }
+    };
+    
+    document.addEventListener("keydown", handleTabKey);
+    
+    return () => {
+      document.removeEventListener("keydown", handleEscapeKey);
+      document.removeEventListener("keydown", handleTabKey);
+    };
+  }, [isMenuOpen, handleEscapeKey]);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
@@ -130,21 +179,24 @@ export function Navbar() {
       </nav>
 
       {/* Mobile Navigation Trigger */}
-      <div className="flex md:hidden items-center gap-4 px-4 py-2 bg-background/80 backdrop-blur-md border border-border rounded-full shadow-sm">
+      <div className="flex md:hidden items-center gap-2 px-3 py-2 bg-background/80 backdrop-blur-md border border-border rounded-full shadow-sm">
         <button
+          ref={menuTriggerRef}
           onClick={() => setIsMenuOpen(true)}
-          className="p-2 text-foreground"
+          className="p-3 min-w-[44px] min-h-[44px] flex items-center justify-center text-foreground rounded-full focus-ring active:bg-foreground/10 transition-colors"
           aria-label="Open menu"
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-menu"
         >
           <Menu className="w-6 h-6" />
         </button>
         
-        <div className="w-[1px] h-4 bg-border" />
+        <div className="w-[1px] h-6 bg-border" />
 
         <button
           onClick={() => setIsModalOpen(true)}
-          className="p-2 text-foreground"
-          aria-label="Open source"
+          className="p-3 min-w-[44px] min-h-[44px] flex items-center justify-center text-foreground rounded-full focus-ring active:bg-foreground/10 transition-colors"
+          aria-label="View source code"
         >
           <Github className="w-5 h-5" />
         </button>
@@ -154,6 +206,11 @@ export function Navbar() {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
+            ref={mobileMenuRef}
+            id="mobile-menu"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navigation menu"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -161,34 +218,34 @@ export function Navbar() {
           >
             <div className="flex justify-between items-center mb-12">
               <span className="text-2xl font-xanh tracking-tighter">{siteConfig.name}</span>
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2">
                 <button
                   onClick={toggleTheme}
-                  className="p-2 text-foreground"
+                  className="p-3 min-w-[48px] min-h-[48px] flex items-center justify-center text-foreground rounded-full focus-ring active:bg-foreground/10 transition-colors"
                   aria-label="Toggle theme"
                 >
                   {theme === "light" ? <Moon className="w-6 h-6" /> : <Sun className="w-6 h-6" />}
                 </button>
                 <button
                   onClick={() => setIsMenuOpen(false)}
-                  className="p-2 text-foreground"
+                  className="p-3 min-w-[48px] min-h-[48px] flex items-center justify-center text-foreground rounded-full focus-ring active:bg-foreground/10 transition-colors"
                   aria-label="Close menu"
                 >
-                  <X className="w-8 h-8" />
+                  <X className="w-7 h-7" />
                 </button>
               </div>
             </div>
 
-            <nav className="flex flex-col gap-6">
+            <nav className="flex flex-col gap-4">
               {navItems.map((item, index) => (
                 <motion.button
                   key={item.name}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
+                  transition={{ delay: index * 0.08 }}
                   onClick={() => scrollTo(item.href)}
                   className={cn(
-                    "text-5xl font-xanh uppercase text-left transition-colors",
+                    "text-4xl sm:text-5xl font-xanh uppercase text-left py-2 transition-colors focus-ring rounded-lg active:opacity-70",
                     activeSection === item.href.substring(1) ? "text-foreground" : "text-foreground/30"
                   )}
                 >
@@ -197,15 +254,15 @@ export function Navbar() {
               ))}
             </nav>
 
-            <div className="mt-auto pt-12 border-t border-border">
+            <div className="mt-auto pt-8 border-t border-border">
               <button
                 onClick={() => {
                   setIsMenuOpen(false);
                   setIsModalOpen(true);
                 }}
-                className="w-full py-6 bg-foreground text-background rounded-2xl text-xl font-mono uppercase tracking-widest flex items-center justify-center gap-4"
+                className="w-full min-h-[56px] py-5 bg-foreground text-background rounded-2xl text-lg font-mono uppercase tracking-widest flex items-center justify-center gap-3 focus-ring active:opacity-90 transition-opacity"
               >
-                <Github className="w-6 h-6" />
+                <Github className="w-5 h-5" />
                 Clone Repository
               </button>
             </div>

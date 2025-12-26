@@ -26,6 +26,10 @@ export function Marquee({
     const content = contentRef.current;
     if (!container || !content) return;
 
+    // Skip animation if user prefers reduced motion
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
+
     const width = content.offsetWidth;
     const duration = width / speed;
 

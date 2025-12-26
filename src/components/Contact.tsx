@@ -18,10 +18,10 @@ export function Contact() {
           <MagneticButton className="text-lg sm:text-xl px-8 sm:px-12 py-4 sm:py-6 w-full sm:w-auto">
             {siteConfig.links.email}
           </MagneticButton>
-          <div className="flex flex-wrap justify-center gap-6 text-xs sm:text-sm font-mono uppercase tracking-widest text-muted">
-            <a href={siteConfig.links.linkedin} className="hover:text-foreground transition-colors">LinkedIn</a>
-            <a href={siteConfig.links.github} className="hover:text-foreground transition-colors">GitHub</a>
-            <a href={siteConfig.links.discord} className="hover:text-foreground transition-colors">Discord</a>
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-4 text-sm font-mono uppercase tracking-widest text-muted">
+            <a href={siteConfig.links.linkedin} className="px-4 py-3 min-h-[44px] flex items-center hover:text-foreground active:text-foreground/70 transition-colors focus-ring rounded-lg">LinkedIn</a>
+            <a href={siteConfig.links.github} className="px-4 py-3 min-h-[44px] flex items-center hover:text-foreground active:text-foreground/70 transition-colors focus-ring rounded-lg">GitHub</a>
+            <a href={siteConfig.links.discord} className="px-4 py-3 min-h-[44px] flex items-center hover:text-foreground active:text-foreground/70 transition-colors focus-ring rounded-lg">Discord</a>
           </div>
         </div>
       </div>
