@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# pastlifepoet | Portfolio Template
+
+[![MIT License](https://img.shields.io/badge/License-MIT-black.svg)](https://opensource.org/licenses/MIT)
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)](https://nextjs.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-v4-black?logo=tailwind-css)](https://tailwindcss.com/)
+
+A high-performance, minimal, and open-source portfolio template built with Next.js 16, GSAP, Framer Motion, and Tailwind CSS v4.
+
+[Live Demo](https://pastlifepoet.me) • [Report Bug](https://github.com/nadidazwad/pastlifepoet/issues) • [Request Feature](https://github.com/nadidazwad/pastlifepoet/issues)
+
+## Features
+
+- **Next.js 16**: App Router, Server Components, and optimized performance.
+- **Tailwind CSS v4**: Modern styling with the latest features.
+- **GSAP & Framer Motion**: Smooth, high-end animations and transitions.
+- **Lenis**: Buttery smooth scrolling experience.
+- **Dark Mode**: System-aware and manual toggle support.
+- **Responsive**: Meticulously optimized for all screen sizes.
+- **Open Source**: MIT Licensed.
 
 ## Getting Started
 
-First, run the development server:
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/nadidazwad/pastlifepoet.git
+   ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2. **Install dependencies**:
+   ```bash
+   pnpm install
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. **Run the development server**:
+   ```bash
+   pnpm dev
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+4. **Customize**:
+   Update `src/config/site.ts` and `src/data/portfolio.ts` with your own information.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Tech Stack
 
-## Learn More
+- **Framework**: [Next.js 16](https://nextjs.org/)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Animations**: [GSAP](https://greensock.com/gsap/), [Framer Motion](https://www.framer.com/motion/)
+- **Smooth Scroll**: [Lenis](https://lenis.darkroom.engineering/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Fonts**: Xanh Mono, Inter
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Deploy easily on [Vercel](https://vercel.com/new):
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Push your code to GitHub.
+2. Import the project into Vercel.
+3. Done.
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+MIT License. Feel free to use it for your own portfolio!
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+Created by [nadidazwad](https://github.com/nadidazwad)

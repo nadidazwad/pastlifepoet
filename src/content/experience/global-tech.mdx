@@ -1,0 +1,36 @@
+---
+title: "Senior Software Engineer"
+company: "Global Tech Inc"
+period: "2021 - 2023"
+slug: "global-tech"
+---
+
+# Scaling Frontend Architecture
+
+During my time at Global Tech, I led the transition from a monolithic frontend to a scalable micro-frontend architecture. This allowed our teams to deploy independently and reduced build times by 60%.
+
+## Achievements
+
+- Architected a shared component library used by 50+ internal teams.
+- Optimized LCP across all core products, improving conversion by 15%.
+- Implemented a robust CI/CD pipeline for frontend deployments.
+
+<Callout type="info">
+  The micro-frontend transition involved orchestrating 15 separate applications into a single cohesive user experience.
+</Callout>
+
+## Technical Stack
+
+<TechStack techs={["React", "TypeScript", "Webpack", "Node.js", "AWS"]} />
+
+## Code Snippet
+
+```typescript
+// Micro-frontend loader implementation
+const loadMicroFrontend = async (name: string, url: string) => {
+  const script = document.createElement('script');
+  script.src = `${url}/remoteEntry.js`;
+  document.head.appendChild(script);
+  // ... initialization logic
+};
+```

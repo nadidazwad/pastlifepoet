@@ -1,0 +1,63 @@
+---
+title: "Principal Engineer"
+company: "Acme Corp"
+period: "2023 - Present"
+slug: "acme-corp"
+---
+
+# Architecting the Future of Distributed Systems
+
+At Acme Corp, I lead the core infrastructure team responsible for our global edge network. My work focuses on sub-millisecond state synchronization and developer experience.
+
+<Callout type="tip">
+  We recently achieved a 40% reduction in global tail latency by implementing a custom gossip protocol in Rust.
+</Callout>
+
+## Key Responsibilities
+
+- Leading a team of 12 engineers across 3 timezones.
+- Designing the architecture for our next-generation serverless platform.
+- Mentoring senior engineers and defining technical roadmaps.
+
+## Technical Stack
+
+<TechStack techs={["Rust", "Go", "Kubernetes", "Terraform", "gRPC"]} />
+
+## Project Timeline
+
+<Timeline 
+  items={[
+    {
+      date: "Q4 2024",
+      title: "Acme OS Launch",
+      description: "Successfully launched the first distributed OS for edge computing."
+    },
+    {
+      date: "Q2 2024",
+      title: "Global State Sync",
+      description: "Implemented the sub-millisecond synchronization engine."
+    },
+    {
+      date: "Q1 2023",
+      title: "Joined Acme",
+      description: "Started as Principal Engineer to lead the infrastructure pivot."
+    }
+  ]} 
+/>
+
+```rust
+// Example of our synchronization logic
+async fn sync_state(node_id: NodeId, state: State) -> Result<()> {
+    let peers = get_closest_peers(node_id).await?;
+    for peer in peers {
+        peer.send_update(state.clone()).await?;
+    }
+    Ok(())
+}
+```
+
+<LinkCard 
+  href="https://acme.corp/engineering" 
+  title="Acme Engineering Blog" 
+  description="Read more about our technical challenges and solutions on our official blog."
+/>
