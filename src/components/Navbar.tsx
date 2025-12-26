@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { useLenis } from "lenis/react";
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@/config/site";

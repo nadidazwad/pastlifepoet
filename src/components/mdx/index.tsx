@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Info, AlertCircle, Lightbulb, Link as LinkIcon, ExternalLink, ChevronRight } from "lucide-react";
-import { motion } from "motion/react";
+import { ImageZoom } from "./ImageZoom";
 
 export const MDXComponents = {
   h1: (props: any) => (
@@ -70,27 +70,7 @@ export const MDXComponents = {
     </div>
   ),
 
-  ImageZoom: ({ src, alt, caption }: { src: string, alt: string, caption?: string }) => (
-    <figure className="my-12 group">
-      <motion.div 
-        whileHover={{ scale: 1.02 }}
-        transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
-        className="relative aspect-video overflow-hidden rounded-2xl bg-muted/10 border border-border cursor-zoom-in"
-      >
-        <Image 
-          src={src} 
-          alt={alt} 
-          fill 
-          className="object-cover transition-transform duration-700 group-hover:scale-105"
-        />
-      </motion.div>
-      {caption && (
-        <figcaption className="mt-4 text-center text-xs font-mono text-muted uppercase tracking-widest">
-          {caption}
-        </figcaption>
-      )}
-    </figure>
-  ),
+  ImageZoom,
 
   Timeline: ({ items }: { items: { date: string, title: string, description: string }[] }) => (
     <div className="relative pl-8 my-12 space-y-12 before:absolute before:left-0 before:top-2 before:bottom-2 before:w-px before:bg-border">
