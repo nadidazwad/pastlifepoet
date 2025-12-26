@@ -6,7 +6,7 @@
 
 A high-performance, minimal, and open-source portfolio template built with Next.js 16, GSAP, Framer Motion, and Tailwind CSS v4.
 
-[Live Demo](https://pastlifepoet.me) • [Report Bug](https://github.com/nadidazwad/pastlifepoet/issues) • [Request Feature](https://github.com/nadidazwad/pastlifepoet/issues)
+[Live Demo](https://localhost5000.me) • [Report Bug](https://github.com/nadidazwad/pastlifepoet/issues) • [Request Feature](https://github.com/nadidazwad/pastlifepoet/issues)
 
 ## Features
 
